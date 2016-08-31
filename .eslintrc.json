@@ -1,10 +1,12 @@
 {
   "env": {
-      "browser": true
+      "browser": true,
+      "mocha": true
   },
   "extends": "standard",
   "plugins": [
-    "standard"
+    "standard",
+    "mocha"
   ],
   "rules": {
     "keyword-spacing": [
@@ -23,5 +25,8 @@
     ],
     "semi": [2, "always"],
     "space-before-function-paren": [2, "never"]
+  },
+  "globals": {
+    "browser": false
   }
 }
