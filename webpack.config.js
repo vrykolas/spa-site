@@ -1,3 +1,5 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const Webpack = require('webpack');
 
 module.exports = {
@@ -24,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'file?name=style/[name].css!sass'
+        loader: 'file?name=style/[name].css!sass?sourceMap'
       },
       {
         test: /\.hbs$/,
@@ -33,15 +35,34 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: 'node_modules/bootstrap-sass/assets/fonts', to: 'fonts' },
+      { from: 'src/images', to: 'images' }
+    ]),
     new Webpack.optimize.DedupePlugin(),
     new Webpack.ProvidePlugin({
       $: 'jquery',
-      _: 'underscore'
+      _: 'underscore',
+      Bootstrap: 'bootstrap-sass'
     }),
     new Webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
+    }),
+    new ImageminPlugin({
+      optipng: {
+        optimizationLevel: 7
+      },
+      gifsicle: {
+        optimizationLevel: 3
+      },
+      jpegtran: {
+        progressive: true
+      },
+      svgo: {
+      },
+      plugins: []
     })
   ]
 };
