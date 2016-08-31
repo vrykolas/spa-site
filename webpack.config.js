@@ -31,5 +31,16 @@ module.exports = {
         loader: 'handlebars-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new Webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new Webpack.ProvidePlugin({
+      $: 'jquery',
+      _: 'underscore'
+    })
+  ]
 };
