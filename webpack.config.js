@@ -33,14 +33,15 @@ module.exports = {
     ]
   },
   plugins: [
+    new Webpack.optimize.DedupePlugin(),
+    new Webpack.ProvidePlugin({
+      $: 'jquery',
+      _: 'underscore'
+    }),
     new Webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
-    }),
-    new Webpack.ProvidePlugin({
-      $: 'jquery',
-      _: 'underscore'
     })
   ]
 };
