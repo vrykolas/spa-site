@@ -3,7 +3,8 @@
   "version": "3.0.0",
   "scripts": {
     "build": "webpack -p",
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "pre-commit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "pre-push-msg": "echo 'Pre-push checks...' && exit 0",
     "start": "webpack-dev-server --progress --colors --content-base public/ --inline",
     "test": "chimp tests/chimp.local.js",
     "test:lint": "npm run test:lint:js || npm run test:lint:sass",
@@ -12,9 +13,17 @@
   },
   "pre-commit": {
     "run": [
-      "precommit-msg",
+      "pre-commit-msg",
       "test:lint:js",
       "test:lint:sass"
+    ]
+  },
+  "pre-push": {
+    "run": [
+      "pre-push-msg",
+      "test:lint:js",
+      "test:lint:sass",
+      "test"
     ]
   },
   "devDependencies": {
@@ -36,6 +45,7 @@
     "imagemin-webpack-plugin": "^1.0.8",
     "node-sass": "^3.8.0",
     "pre-commit": "^1.1.3",
+    "pre-push": "^0.1.1",
     "sass-lint": "^1.9.1",
     "sass-loader": "^4.0.0",
     "webpack": "^1.13.2",
