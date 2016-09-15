@@ -1,1 +1,40 @@
-@import '"~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import '"~bootstrap-sass/assets/stylesheets/_bootstrap';
+
+#app {
+  max-width: 980px;
+}
+
+// Form validation
+.form-control-error {
+  visibility: hidden;
+}
+
+.has-feedback {
+  .form-control-feedback {
+    display: block;
+  }
+
+  .form-control-feedback-success {
+    display: none;
+  }
+
+  .form-control-feedback-error {
+    display: none;
+  }
+
+  &.has-error {
+    .form-control-feedback-error {
+      display: block;
+    }
+
+    .form-control-error {
+      visibility: visible;;
+    }
+  }
+
+  &.has-success {
+    .form-control-feedback-success {
+      display: block;
+    }
+  }
+}
