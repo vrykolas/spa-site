@@ -29,6 +29,7 @@
   },
   "globals": {
     "browser": false,
+    "$": false,
     "_": false
   }
 }
