@@ -16,7 +16,7 @@ const LoginView = Marionette.View.extend({
   events: {
     'keyup @ui.email': 'handleEmailChange',
     'keyup @ui.password': 'handlePasswordChange',
-    'click @ui.loginButton': 'validate, handleLoginClick',
+    'click @ui.loginButton': 'handleLoginClick',
     'click @ui.forgottenPasswordLink': 'handleForgottenPasswordClick'
   },
 
@@ -60,9 +60,13 @@ const LoginView = Marionette.View.extend({
 
   handleLoginClick: function(event) {
     event.preventDefault();
-    if(this.model.isValid(true)) {
-      console.log('login valid');
-    }
+    this.model.login()
+      .then(function(data) {
+        console.log(data);
+      })
+      .fail(function() {
+        console.log('There was a problem!');
+      });
   },
 
   handleForgottenPasswordClick: function(event) {

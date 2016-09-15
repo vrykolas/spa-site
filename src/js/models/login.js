@@ -5,6 +5,8 @@ import Validation from 'backbone-validation';
 _.extend(Backbone.Model.prototype, Validation.mixin);
 
 const LoginModel = Backbone.Model.extend({
+  url: 'https://localhost:3000/login',
+
   defaults: {
     email: '',
     password: ''
@@ -25,6 +27,10 @@ const LoginModel = Backbone.Model.extend({
       required: true,
       msg: 'Please enter a password'
     }
+  },
+
+  login: function() {
+    return $.post(this.url, this.toJSON());
   }
 });
 
