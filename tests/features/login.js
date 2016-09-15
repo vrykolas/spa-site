@@ -32,7 +32,7 @@ describe('Login Page', function() {
     });
   });
 
-  describe.skip('Check client-side validation', function() {
+  describe('Check client-side validation', function() {
     beforeEach(function() {
       browser.refresh();
       browser.waitForExist('#login');
@@ -42,24 +42,21 @@ describe('Login Page', function() {
       browser.setValue('#login #email', '');
       browser.setValue('#login #password', 'password');
       browser.leftClick('#login .login-button');
-      browser.waitForExist('#login .email-error');
-      browser.isExisting('#login .email-error').should.be.true;
+      browser.isVisible('#login .form-control-email-error').should.be.true;
     });
 
     it('should display an error if an invalid email is supplied', function() {
       browser.setValue('#login #email', 'bob');
       browser.setValue('#login #password', 'password');
       browser.leftClick('#login .login-button');
-      browser.waitForExist('#login .email-error');
-      browser.isExisting('#login .email-error').should.be.true;
+      browser.isVisible('#login .form-control-email-error').should.be.true;
     });
 
     it('should display an error if no password is supplied', function() {
       browser.setValue('#login #email', 'valid-email@example.com');
       browser.setValue('#login #password', '');
       browser.leftClick('#login .login-button');
-      browser.waitForExist('#login .password-error');
-      browser.isExisting('#login .password-error').should.be.true;
+      browser.isVisible('#login .form-control-password-error').should.be.true;
     });
   });
 
