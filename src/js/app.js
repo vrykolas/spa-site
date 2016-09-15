@@ -1,13 +1,19 @@
 import init from './init';
+import window from 'window';
 import Marionette from 'backbone.marionette';
 
 init();
 
-export default Marionette.Application.extend({
+import LoginView from './views/login';
+window.App.Views.Login = LoginView;
+
+var App = Marionette.Application.extend({
   region: '#app',
 
-  initialize() {
-    this.on('start', () => {
-    });
+  onStart: function() {
+    this.showView(new window.App.Views.Login());
   }
 });
+
+var myApp = new App();
+myApp.start();
