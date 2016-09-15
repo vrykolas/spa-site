@@ -38,24 +38,50 @@ describe('Login Page', function() {
       browser.waitForExist('#login');
     });
 
-    it('should display an error if no email is supplied', function() {
+    it('should display an error if the email is made blank', function() {
+      browser.setValue('#login #email', 'a');
       browser.setValue('#login #email', '');
-      browser.setValue('#login #password', 'password');
+      browser.setValue('#login #password', 'valid-password');
+      browser.waitForVisible('#login .form-control-email-error', 100);
+      browser.isVisible('#login .form-control-email-error').should.be.true;
+    });
+
+    it.skip('should display an error if no email is submitted', function() {
+      browser.setValue('#login #email', '');
+      browser.setValue('#login #password', 'valid-password');
       browser.leftClick('#login .login-button');
+      browser.waitForVisible('#login .form-control-email-error', 100);
       browser.isVisible('#login .form-control-email-error').should.be.true;
     });
 
     it('should display an error if an invalid email is supplied', function() {
       browser.setValue('#login #email', 'bob');
-      browser.setValue('#login #password', 'password');
+      browser.setValue('#login #password', 'valid-password');
+      browser.waitForVisible('#login .form-control-email-error', 100);
+      browser.isVisible('#login .form-control-email-error').should.be.true;
+    });
+
+    it.skip('should display an error if an invalid email is supplied', function() {
+      browser.setValue('#login #email', 'bob');
+      browser.setValue('#login #password', 'valid-password');
       browser.leftClick('#login .login-button');
+      browser.waitForVisible('#login .form-control-email-error', 100);
       browser.isVisible('#login .form-control-email-error').should.be.true;
     });
 
     it('should display an error if no password is supplied', function() {
       browser.setValue('#login #email', 'valid-email@example.com');
+      browser.setValue('#login #password', 'valid-password');
+      browser.setValue('#login #password', '');
+      browser.waitForVisible('#login .form-control-password-error', 100);
+      browser.isVisible('#login .form-control-password-error').should.be.true;
+    });
+
+    it.skip('should display an error if no password is submitted', function() {
+      browser.setValue('#login #email', 'valid-email@example.com');
       browser.setValue('#login #password', '');
       browser.leftClick('#login .login-button');
+      browser.waitForVisible('#login .form-control-password-error', 100);
       browser.isVisible('#login .form-control-password-error').should.be.true;
     });
   });
