@@ -17,6 +17,7 @@
         "overrides": {
           "case": { "after": true },
           "else": { "after": true },
+          "export": { "after": true },
           "from": { "after": true },
           "return": { "after": true },
           "try": { "after": true }
