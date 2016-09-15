@@ -16,7 +16,7 @@ const LoginView = Marionette.View.extend({
   events: {
     'keyup @ui.email': 'handleEmailChange',
     'keyup @ui.password': 'handlePasswordChange',
-    'click @ui.loginButton': 'handleLoginClick',
+    'click @ui.loginButton': 'validate, handleLoginClick',
     'click @ui.forgottenPasswordLink': 'handleForgottenPasswordClick'
   },
 
@@ -32,7 +32,6 @@ const LoginView = Marionette.View.extend({
   handleValidation: function(isValid, model, errors) {
     _.keys(this.model.changedAttributes()).forEach(
       function(name) {
-        console.log(name);
         var $element = this.getUI(name);
         var $elementHolder = $element.closest('.form-group');
         var $errorLabel = $element.siblings('.form-control-error');
