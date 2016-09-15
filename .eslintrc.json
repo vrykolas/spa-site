@@ -30,6 +30,9 @@
   "globals": {
     "browser": false,
     "$": false,
-    "_": false
+    "_": false,
+    "Backbone": false,
+    "BackboneValidation": false,
+    "Marionette": false
   }
 }

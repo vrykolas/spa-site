@@ -48,6 +48,9 @@ module.exports = {
     new Webpack.ProvidePlugin({
       $: 'jquery',
       _: 'underscore',
+      Backbone: 'backbone',
+      Marionette: 'backbone.marionette',
+      BackboneValidation: 'backbone-validation',
       Bootstrap: 'bootstrap-sass'
     }),
     new Webpack.optimize.UglifyJsPlugin({

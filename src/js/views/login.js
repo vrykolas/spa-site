@@ -1,4 +1,3 @@
-import Marionette from 'backbone.marionette';
 import LoginModel from '../models/login';
 import loginTemplate from '../../templates/login.hbs';
 

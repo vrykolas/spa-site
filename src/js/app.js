@@ -1,6 +1,5 @@
 import init from './init';
 import window from 'window';
-import Marionette from 'backbone.marionette';
 
 init();
 

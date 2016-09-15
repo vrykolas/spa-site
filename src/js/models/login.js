@@ -1,9 +1,3 @@
-import _ from 'underscore';
-import Backbone from 'backbone';
-import Validation from 'backbone-validation';
-
-_.extend(Backbone.Model.prototype, Validation.mixin);
-
 const LoginModel = Backbone.Model.extend({
   url: 'https://localhost:3000/login',
 
