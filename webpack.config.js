@@ -13,6 +13,11 @@ module.exports = {
     filename: 'app.js',
     publicPath: '/'
   },
+  externals: [
+    {
+      window: 'window'
+    }
+  ],
   module: {
     loaders: [
       {
