@@ -28,6 +28,7 @@
     "space-before-function-paren": [2, "never"]
   },
   "globals": {
-    "browser": false
+    "browser": false,
+    "_": false
   }
 }
